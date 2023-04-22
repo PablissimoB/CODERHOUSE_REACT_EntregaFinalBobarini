@@ -1,6 +1,6 @@
 .containerNavbar{
     width: 100%;
-    height: 10vh;
+    height: 12vh;
     background-color:white;
     display: flex;
     align-items: center;
@@ -17,10 +17,11 @@
 .navbarItem{
     list-style: none;
     cursor: pointer;
-    font-size: 1.2rem;
-    /* box-shadow: 2px 2px 2px 2px grey; */
+    font-size: 14px;
+    box-shadow: 1px 1px 1px 1px black;
     padding: 7px 10px;
-    border-radius: 10px;
+    min-width: 12vw;
+    width: 100%;
     background-color: green;
     text-align: center;
     text-decoration: none;

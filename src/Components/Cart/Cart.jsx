@@ -14,78 +14,88 @@ const Cart = () => {
 
   const clear = () => {
     Swal.fire({
-      title: "Seguro que quieres vaciar el carrito?",
+      title: "¿Vaciar el carrito?",
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Si, vaciar",
-      denyButtonText: `No, no vaciar`,
+      confirmButtonText: "Si",
+      denyButtonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
         clearCart();
         Swal.fire("Carrito vaciado exitosamente", "", "success");
       } else if (result.isDenied) {
-        Swal.fire("El carrito queda como estaba", "", "info");
+        Swal.fire("No se han producido cambios", "", "info");
       }
     });
   };
 
   if(orderId){
     return (
-      <div>
+      <div className="success">
         <h2>Gracias por su compra</h2>
-        <h4>el comprobante es : {orderId}</h4>
-        <Link to="/">Seguir comprando</Link>
+        <h4>La orden es : {orderId}</h4>
+        <Link to="/"> <Button color="success" variant="contained" >Inicio</Button> </Link>
       </div>
     )
   }
-
-  return (
-    <div>
-      {!showForm ? (
-        <div className="cart-container">
-          <div className="container-items">
-            {cart.map((item) => {
-              return (
-                <div key={item.id} className="cart-item">
-                  <img src={item.img} alt="" />
-                  <div className="cart-item-info">
-                    <h2>{item.name}</h2>
-                    <h2>${item.price}.-</h2>
-                    <h2>Unidades: {item.quantity}</h2>
-                    <Button
-                      color="secondary"
-                      variant="contained"
-                      onClick={() => deleteProductById(item.id)}
-                    >
-                      Eliminar
-                    </Button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="cart-info">
-            <h3>Precio total: {getTotalPrice()}</h3>
-            <h3>Descuento: - </h3>
-            <h3>Precio final: -</h3>
-
-            {cart.length > 0 && (
-              <div className="btn-cart">
-                <Button variant="contained" onClick={()=>setShowForm(true)}>Terminar la compra</Button>
-                <Button onClick={clear} variant="contained">
-                  Vaciar
-                </Button>
-              </div>
-            )}
-
-            <h1>Total: ${getTotalPrice()}</h1>
-          </div>
-        </div>
-      ) : (
-        <FormCheckout cart={cart} getTotalPrice={getTotalPrice} setOrderId={setOrderId} clearCart={clearCart} />
-      )}
+  
+  if(getTotalPrice()==0){
+    return (
+    <div className="no-products">
+      <h1>No hay productos en el carrito</h1>
     </div>
-  );
+    )
+  }
+  else{
+    return (
+      <div>
+        {!showForm ? (
+          <div className="cart-container">
+            <div className="container-items">
+              {cart.map((item) => {
+                return (
+                  <div key={item.id} className="cart-item">
+                    <img src={item.img} alt="" />
+                    <div className="cart-item-info">
+                      <h2>{item.title}</h2>
+                      <h4>${item.price}</h4>
+                      <h4>Unidades: {item.quantity}</h4>
+                      <Button
+                        color="warning"
+                        variant="contained"
+                        onClick={() => deleteProductById(item.id)}
+                      >
+                        Eliminar
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="cart-info">
+              <h1>Importe Total: ${getTotalPrice()}</h1>
+              {cart.length > 0 && (
+                <div className="btn-cart">
+                  
+                  <Button variant="contained" color="success" onClick={()=>setShowForm(true)}>
+                    Continuar
+                    </Button>
+                  <Button onClick={clear} color="error" variant="contained">
+                    Vaciar
+                  </Button>
+                </div>
+              )}
+
+            </div>
+          </div>
+        ) : (
+          
+          <FormCheckout cart={cart} getTotalPrice={getTotalPrice} setOrderId={setOrderId} clearCart={clearCart} />
+        )}
+      </div>
+    );
+  }
+  
 };
 
 export default Cart;
