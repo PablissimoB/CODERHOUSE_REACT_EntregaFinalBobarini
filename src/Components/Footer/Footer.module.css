@@ -1,0 +1,13 @@
+.footerContainer{
+    display: flex;
+    background-color: green;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon{
+    color: white;
+  }
+  .icon:hover{
+    color:greenyellow;
+    cursor: pointer;
+  }
