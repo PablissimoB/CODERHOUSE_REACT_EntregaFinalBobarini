@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css";
+import { CartContext } from "../../Context/CartContext";
+
 const ItemDetail = ({ productSelected, onAdd, quantity }) => {
+
+  const { getQuantityById } =
+  useContext(CartContext);
+
+  quantity = getQuantityById(productSelected.id);
+
   return (
     <div className={"containerItemDetail"}>
       <div className={"containerImage"}>
