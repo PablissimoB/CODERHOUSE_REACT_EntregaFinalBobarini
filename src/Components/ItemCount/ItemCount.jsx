@@ -31,7 +31,7 @@ const ItemCount = ({ initial, onAdd, id }) => {
 
   return (
     <div className="container-btn">
-    <h3>Cantidad Actual: {contador}</h3>
+    <h3>Cantidad Actual: {contador==undefined? 0:contador}</h3>
     <div className="btns">
       <Button variant="outlined" color="success" onClick={sumar}>
         +
