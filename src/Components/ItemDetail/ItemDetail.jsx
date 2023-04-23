@@ -29,6 +29,7 @@ const ItemDetail = ({ productSelected, onAdd, quantity }) => {
         <ItemCount
           onAdd={onAdd}
           initial={quantity}
+          id = { productSelected.id}
         />
       </div>
     </div>
