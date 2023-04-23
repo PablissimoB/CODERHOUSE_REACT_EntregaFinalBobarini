@@ -34,9 +34,9 @@ const ItemDetailContainer = () => {
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "Producto agregado exitosamente",
+      title: "Carrito modificado exitosamente",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 1000,
     });
   };
 
