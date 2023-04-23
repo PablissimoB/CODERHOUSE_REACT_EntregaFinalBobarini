@@ -40,8 +40,7 @@ const FormCheckout = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
     justifyContent: 'center', alignItems:'center', gap: '20px'}}>
       <h2>Importe Total: ${getTotalPrice()}</h2>
     </Box>
-    <Box sx={{height: '26vh', display:'flex', 
-    justifyContent: 'center', alignItems:'center', gap: '20px', backgroundColor:'green'}}>
+    <Box sx={{height: '26vh', backgroundColor:'green'}}>
       {cart.map((item) => {
                 return (
                   <div key={item.id} className="cart-item">
