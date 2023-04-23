@@ -16,8 +16,9 @@ const Cart = () => {
     Swal.fire({
       title: "¿Vaciar el carrito?",
       showDenyButton: true,
-      showCancelButton: true,
+      showCancelButton: false,
       confirmButtonText: "Si",
+      confirmButtonColor: "#006F1E",
       denyButtonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
